@@ -1,6 +1,6 @@
 ---
 name: codex-agent-usage
-description: "Orient and extend Codex Desktop or Codex CLI workflows: discover installed/available plugins, skills, connectors, MCP servers, and artifact runtimes; choose ephemeral subagents versus stable prompt-layered agents; preserve main-thread context during repo/folder/document reviews; guide safe MCP/plugin setup via config.toml; and create/update AGENTS.md project guidance. Use when the user asks about agents, subagents, delegation, parallel review, Codex capabilities, missing tools, plugin/skill selection, Word/Excel/PDF/PPTX or business-plan package reviews, prompt layering/custom agents, reusable workflows, or any review that would otherwise require manually reading many files or writing ad hoc extraction scripts."
+description: "Orient and extend Codex Desktop or Codex CLI workflows: discover installed/available plugins, skills, connectors, MCP servers, and artifact runtimes; choose ephemeral subagents versus stable prompt-layered agents; preserve main-thread context during repo/folder/document reviews; guide safe MCP/plugin setup via config.toml; and create/update AGENTS.md project guidance. Use when the user asks about agents, subagents, delegation, parallel review, Codex capabilities, missing tools, browser-chat versus tool-backed workflow, plugin/skill selection, Word/Excel/PDF/PPTX or business-plan package reviews, prompt layering/custom agents, reusable workflows, or any review that would otherwise require manually reading many files or writing ad hoc extraction scripts."
 ---
 
 # Codex Workflow Orchestration
@@ -12,6 +12,27 @@ This skill is domain-generic. It works for code, business plans, documents, spre
 Codex Desktop, Codex CLI, plugins, connectors, and subagent tools can change over time. Treat the visible runtime as ground truth. Do not rely on memory of the app, old product knowledge, or hardcoded UI paths when local discovery is available.
 
 Codex is often more powerful than a prepackaged AI workspace because the app can sit close to the Codex CLI, local files, MCP servers, shell tools, and persistent configuration. The tradeoff is that a fresh setup may start comparatively bare: it may expose only basic file/shell tools and not yet include document, spreadsheet, PDF, or presentation tooling. Treat missing artifact tools as a setup/capability gap, not as a reason to improvise low-quality extraction in the main thread.
+
+## Teaching Frame
+
+Use this skill when a user is moving from plain browser chat to a tool-backed workspace. The lesson is not that one model is smart and another is stupid. The lesson is that an unconstrained chat tab is the wrong environment for whole deliverables that need files, formulas, evidence, layout checks, and independent review.
+
+For business plans and similar packages, enforce this frame:
+
+- numbers belong in a spreadsheet, database, script, or other source of truth;
+- prose should reference assumptions and outputs, not invent calculations;
+- reviewers should attack different failure modes instead of giving one generic opinion;
+- fixes should start from source files, then regenerate derived PDFs, decks, summaries, or exports.
+
+Say this plainly to non-technical users:
+
+```text
+The upgrade is not magic AI. The upgrade is giving the AI a workspace: files, tools, focused reviewers, proof, and a correction loop.
+```
+
+## Precedence
+
+If the current folder has `AGENTS.md`, README instructions, project-specific guidance, or a stronger local workflow contract, follow that first. This skill supplies orchestration patterns; it does not override project rules, security boundaries, file conventions, or review/persistence requirements already defined by the workspace.
 
 ## Scope Checklist
 
@@ -406,7 +427,7 @@ Use this explanation:
 
 ```text
 The first step is not “make the AI smarter.”
-The first step is to stop using one generic chat for every job.
+The first step is to stop using one generic chat tab for a job that needs tools.
 
 We can ask the main assistant to coordinate specialists:
 - one checks facts, numbers, and internal consistency,

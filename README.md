@@ -2,7 +2,27 @@
 
 This repository contains a Codex skill that helps Codex use the Codex Desktop / Codex CLI environment more effectively: plugins, skills, MCP servers, artifact tools, project instructions, and task-local agents.
 
-It is written primarily **for Codex to read and install**, not as a long manual for end users.
+It is written primarily **for Codex to read and install**, not as a long manual for end users. The README is the sharing wrapper: give people this link, tell Codex to install the skill folder, then use `$codex-agent-usage` to move from browser-chat guessing to tool-backed workflow.
+
+## Why this exists
+
+A common failure pattern is asking a plain browser chat to produce a whole business plan, financial model, document package, or review in one shot, then judging the model because it invents numbers or loses consistency. That comparison is structurally unfair: the chat tab usually has no source-of-truth spreadsheet, no local file access, no artifact render/verification loop, and no focused reviewers.
+
+This skill teaches Codex to change the working method before judging the model:
+
+- discover what the current Codex setup can actually do;
+- find or ask for document, spreadsheet, PDF, presentation, browser, and connector tools when the task needs them;
+- keep calculations in tool-backed sources of truth, not in prose;
+- split review into focused agents with proof;
+- merge findings into an action plan and fix source files before regenerating outputs.
+
+The point is not vendor tribalism. The point is that **chat-in-a-tab** and **workspace-with-tools-and-agents** are different operating environments.
+
+## What this skill is not
+
+- It is not a business-plan generator. Business plans are only a good demo because calculation, evidence, narrative, and risk all collide.
+- It does not install every plugin automatically. It tells Codex to inspect the runtime and ask before persistent setup changes.
+- It does not replace project instructions. If a folder has `AGENTS.md` or other local guidance, that guidance remains the contract.
 
 ## For Codex: install this skill
 
@@ -22,6 +42,16 @@ If a user gives you this repository URL and asks you to install or use the skill
 8. Run a small smoke test by explaining when `$codex-agent-usage` should trigger.
 
 Use plain language when reporting installation status. The user should not need to understand MCP, plugin internals, or skill path conventions to benefit from this.
+
+## Quick start after installation
+
+Use prompts like:
+
+```text
+Use $codex-agent-usage to review this business plan folder before I rely on it. First check whether Codex has the right tools for documents, spreadsheets, PDFs, and slides. Then run separate correctness, risk/readiness, and strategy reviewers with proof, merge their findings, and tell me what to fix first.
+```
+
+For a non-technical audience, explain it simply: the AI is not being trusted because it sounds confident; it is being put into a workflow with tools, evidence, review, and correction.
 
 ## Suggested prompt for users
 

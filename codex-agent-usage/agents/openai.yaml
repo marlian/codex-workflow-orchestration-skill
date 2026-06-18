@@ -1,4 +1,4 @@
 interface:
   display_name: "Codex Workflow Orchestration"
-  short_description: "Find tools, agents, and workflow paths"
-  default_prompt: "Use $codex-agent-usage to choose the right Codex plugins, tools, agents, and project setup for this task."
+  short_description: "Run tool-backed agent workflows"
+  default_prompt: "Use $codex-agent-usage to choose the right tools, agents, and review workflow before starting this task."
