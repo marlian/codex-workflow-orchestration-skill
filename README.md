@@ -6,21 +6,23 @@ It is written primarily **for Codex to read and install**, not as a long manual 
 
 ## Why this exists
 
-A common failure pattern is asking a plain browser chat to produce a whole business plan, financial model, document package, or review in one shot, then judging the model because it invents numbers or loses consistency. That comparison is structurally unfair: the chat tab usually has no source-of-truth spreadsheet, no local file access, no artifact render/verification loop, and no focused reviewers.
+A fresh Codex setup can look deceptively simple: a chat box, a folder, maybe a terminal. Its real power appears only when Codex knows how to discover and use the environment around it: local files, installed plugins, available skills, MCP servers, connectors, artifact tools, project guidance, and task-local agents.
 
-This skill teaches Codex to change the working method before judging the model:
+This skill is a small **Codex unlock kit**. It teaches Codex to start important work by asking: what can this runtime actually do, what tools are missing, what needs approval, and what workflow should we run?
 
-- discover what the current Codex setup can actually do;
-- find or ask for document, spreadsheet, PDF, presentation, browser, and connector tools when the task needs them;
-- keep calculations in tool-backed sources of truth, not in prose;
-- split review into focused agents with proof;
-- merge findings into an action plan and fix source files before regenerating outputs.
+It helps Codex avoid common bare-setup failure modes:
 
-The point is not vendor tribalism. The point is that **chat-in-a-tab** and **workspace-with-tools-and-agents** are different operating environments.
+- treating Codex like a plain browser chat instead of a workspace;
+- doing broad reviews in the main thread until context is exhausted;
+- calculating important numbers in prose instead of using a source of truth;
+- inventing fragile extraction scripts before checking for document, spreadsheet, PDF, or presentation tools;
+- giving generic advice when the task needs focused agents, evidence, and a correction loop.
+
+Business plans are one useful example, but not the product. The product is a reusable operating pattern: **discover capability -> choose tools -> split roles -> require proof -> merge findings -> fix source files -> regenerate outputs**.
 
 ## What this skill is not
 
-- It is not a business-plan generator. Business plans are only a good demo because calculation, evidence, narrative, and risk all collide.
+- It is not a business-plan generator. Business plans are only one example of a workflow that needs tools, numbers, evidence, and review.
 - It does not install every plugin automatically. It tells Codex to inspect the runtime and ask before persistent setup changes.
 - It does not replace project instructions. If a folder has `AGENTS.md` or other local guidance, that guidance remains the contract.
 
@@ -45,13 +47,29 @@ Use plain language when reporting installation status. The user should not need 
 
 ## Quick start after installation
 
-Use prompts like:
+First, use it to unlock the current Codex setup:
 
 ```text
-Use $codex-agent-usage to review this business plan folder before I rely on it. First check whether Codex has the right tools for documents, spreadsheets, PDFs, and slides. Then run separate correctness, risk/readiness, and strategy reviewers with proof, merge their findings, and tell me what to fix first.
+Use $codex-agent-usage to orient this Codex environment. Tell me what tools, skills, plugins, connectors, and artifact capabilities are visible; what is missing for the kind of work I want to do; what needs my approval to enable; and give me a first recommended workflow.
 ```
 
-For a non-technical audience, explain it simply: the AI is not being trusted because it sounds confident; it is being put into a workflow with tools, evidence, review, and correction.
+Then use it on real work:
+
+```text
+Use $codex-agent-usage to turn this folder into a workflow. Check available tools first, identify the source-of-truth files, decide whether we need reviewers or other agents, and give me the first safe next step.
+```
+
+For a review-heavy task:
+
+```text
+Use $codex-agent-usage to review this package before I rely on it. First verify the tools needed for the file types. Then run separate correctness, risk/readiness, and strategy reviewers with proof, merge their findings, and tell me what to fix first.
+```
+
+For a recurring project:
+
+```text
+Use $codex-agent-usage to create a short AGENTS.md from my working rules so future Codex sessions know the project goal, source-of-truth files, review process, and safety boundaries.
+```
 
 ## Suggested prompt for users
 
@@ -137,6 +155,7 @@ codex-agent-usage/
   agents/openai.yaml
   references/
   assets/review-prompts/
+  assets/workflow-prompts/
 ```
 
 The skill folder is intentionally self-contained. The repository README is only the installation and orientation wrapper.

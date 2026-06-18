@@ -1,6 +1,6 @@
-# Demo Case Study — Business Plan Review
+# Example Scenario — Business Plan Review
 
-This is an illustrative demo arc for explaining agentic workflows to non-technical users. It is not a business-plan-specific method; it is a concrete story that makes the generic pattern visible. Replace the domain, artifacts, and reviewer roles with whatever the user's real work requires.
+This is an illustrative scenario for explaining tool-backed Codex workflows to non-technical users. It is not a business-plan-specific method; it is a concrete story that makes the generic pattern visible. Replace the domain, artifacts, and reviewer roles with whatever the user's real work requires.
 
 ## Starting Objection
 
@@ -64,7 +64,7 @@ Run three reviewers:
 | Bank/compliance | Funding assumptions lack evidence; customer-contact or privacy claims are not documented. |
 | Strategy/architecture | Co-founder marketing labor is described but absent from the model. |
 
-This is the moment the demo lands: the AI-generated package is not trusted because it is polished; it is improved because independent roles inspect it with proof.
+This is the moment the workflow becomes visible: the AI-generated package is not trusted because it is polished; it is improved because independent roles inspect it with proof.
 
 ## Step 4 — Merge Findings and Fix Source of Truth
 
@@ -80,7 +80,7 @@ Then it fixes source files first:
 3. supporting dossiers;
 4. slide deck/PDF exports.
 
-## Demo Takeaway
+## Workflow Takeaway
 
 Use this phrasing:
 
@@ -90,7 +90,7 @@ The serious workflow is produce → review → correct → regenerate.
 Agents make the review legible because each one has a job.
 ```
 
-## Good Live Prompt
+## Good First Prompt
 
 ```text
 Use $codex-agent-usage to review this business plan folder before I rely on it.

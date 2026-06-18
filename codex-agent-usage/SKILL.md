@@ -1,34 +1,50 @@
 ---
 name: codex-agent-usage
-description: "Orient and extend Codex Desktop or Codex CLI workflows: discover installed/available plugins, skills, connectors, MCP servers, and artifact runtimes; choose ephemeral subagents versus stable prompt-layered agents; preserve main-thread context during repo/folder/document reviews; guide safe MCP/plugin setup via config.toml; and create/update AGENTS.md project guidance. Use when the user asks about agents, subagents, delegation, parallel review, Codex capabilities, missing tools, browser-chat versus tool-backed workflow, plugin/skill selection, Word/Excel/PDF/PPTX or business-plan package reviews, prompt layering/custom agents, reusable workflows, or any review that would otherwise require manually reading many files or writing ad hoc extraction scripts."
+description: "Unlock and orchestrate Codex Desktop or Codex CLI workflows: inspect the visible runtime; discover installed/available plugins, skills, connectors, MCP servers, and artifact runtimes; choose tools and task-local agents; preserve main-thread context during repo/folder/document reviews; guide safe MCP/plugin setup via config.toml; and create/update AGENTS.md project guidance. Use when the user asks to set up, orient, unlock, or improve their Codex workflow; asks about agents, subagents, delegation, parallel review, Codex capabilities, missing tools, browser-chat versus tool-backed workflow, plugin/skill selection, Word/Excel/PDF/PPTX or business-plan package reviews, prompt layering/custom agents, reusable workflows, or any review that would otherwise require manually reading many files or writing ad hoc extraction scripts."
 ---
 
 # Codex Workflow Orchestration
 
-Use this skill to orient Codex in its current runtime, choose the right capability layer, and turn plain AI chat into a visible agentic workflow: the main Codex thread coordinates, specialized agents inspect or execute narrow tasks, and the final answer merges evidence into decisions.
+Use this skill to unlock Codex in its current runtime, choose the right capability layer, and turn plain AI chat into a visible tool-backed workflow: the main Codex thread coordinates, tools handle the parts that require machinery, specialized agents inspect or execute narrow tasks, and the final answer merges evidence into decisions.
 
-This skill is domain-generic. It works for code, business plans, documents, spreadsheets, research packs, presentations, proposals, contracts, and operational plans. Review is the best first demonstration because role separation is easy to understand and catches real mistakes.
+This skill is domain-generic. It works for code, business plans, documents, spreadsheets, research packs, presentations, proposals, contracts, and operational plans. Review is a good first use case because role separation is easy to understand and catches real mistakes, but the broader job is runtime orientation and workflow design.
 
 Codex Desktop, Codex CLI, plugins, connectors, and subagent tools can change over time. Treat the visible runtime as ground truth. Do not rely on memory of the app, old product knowledge, or hardcoded UI paths when local discovery is available.
 
 Codex is often more powerful than a prepackaged AI workspace because the app can sit close to the Codex CLI, local files, MCP servers, shell tools, and persistent configuration. The tradeoff is that a fresh setup may start comparatively bare: it may expose only basic file/shell tools and not yet include document, spreadsheet, PDF, or presentation tooling. Treat missing artifact tools as a setup/capability gap, not as a reason to improvise low-quality extraction in the main thread.
 
-## Teaching Frame
+## Unlock Frame
 
-Use this skill when a user is moving from plain browser chat to a tool-backed workspace. The lesson is not that one model is smart and another is stupid. The lesson is that an unconstrained chat tab is the wrong environment for whole deliverables that need files, formulas, evidence, layout checks, and independent review.
+Use this skill when a user is moving from plain browser chat to a tool-backed workspace, or when they ask Codex to handle work that depends on files, accounts, plugins, agents, or repeatable process. The lesson is not that one model is smart and another is stupid. The lesson is that an unconstrained chat tab is the wrong environment for deliverables that need files, formulas, evidence, layout checks, account context, or independent review.
 
-For business plans and similar packages, enforce this frame:
+For any substantial task, enforce this frame:
 
-- numbers belong in a spreadsheet, database, script, or other source of truth;
-- prose should reference assumptions and outputs, not invent calculations;
-- reviewers should attack different failure modes instead of giving one generic opinion;
-- fixes should start from source files, then regenerate derived PDFs, decks, summaries, or exports.
+- first discover what the current Codex runtime can actually do;
+- keep calculations and structured data in tools or source-of-truth files, not only in prose;
+- use artifact tools for real file formats instead of improvised extraction when fidelity matters;
+- split broad review into focused roles with proof;
+- fix source files first, then regenerate derived PDFs, decks, summaries, exports, or messages;
+- make missing capabilities visible and ask before persistent setup changes.
 
 Say this plainly to non-technical users:
 
 ```text
-The upgrade is not magic AI. The upgrade is giving the AI a workspace: files, tools, focused reviewers, proof, and a correction loop.
+The upgrade is not magic AI. The upgrade is giving Codex a workspace: files, tools, focused reviewers, proof, and a correction loop.
 ```
+
+## First-Run Unlock Protocol
+
+When the user asks to set up, orient, improve, or "unlock" Codex, do this before running a domain workflow:
+
+1. Ask for the work category if it is not obvious.
+2. Inventory visible skills/plugins, callable tools, connectors, folder contents, project guidance, and local config only when relevant.
+3. Return a capability map: available now, missing/disabled, needs approval, and unsafe/not recommended.
+4. Recommend the smallest next setup; prefer visible official/curated plugins before MCP/community tools.
+5. Give one copyable first-workflow prompt using `$codex-agent-usage`.
+6. If work will repeat in the folder, offer to create/update `AGENTS.md`.
+7. If enough capability exists, start one small real workflow and show proof.
+
+Use this output shape: `Codex capability map` -> `Recommended first workflow` -> `Optional setup`.
 
 ## Precedence
 
@@ -176,11 +192,11 @@ Typical procedure:
 
 If a native subagent/spawn tool is visible, create one task-local subagent per role. If no subagent tool is visible, use tool discovery for “subagent”, “multi-agent”, “delegate”, or “spawn agent”. If runtime subagents truly are not available, run the same role passes sequentially in the main thread and explicitly label that as a fallback.
 
-Do not require persistent custom agents for a simple demo. Persistent agent config is useful for recurring teams, but runtime task-local agents are the default for one-off reviews and demos.
+Do not require persistent custom agents for a one-off workflow. Persistent agent config is useful for recurring teams, but runtime task-local agents are the default for one-off reviews and first runs.
 
 Default to ephemeral reporting: subagents return their findings to the main thread; the main thread merges them in chat. Do not create `review/`, markdown reports, or other persistent files unless the user explicitly asks to save the review. For non-technical users, avoiding surprise files is part of the usability contract.
 
-Do not invent tool names. Do not expose prompt files to the user unless they ask. Most demos can be run with one plain-language request.
+Do not invent tool names. Do not expose prompt files to the user unless they ask. Most first workflows can be started with one plain-language request.
 
 If the user asks to make the setup reusable across future sessions, separate that from runtime delegation: reusable prompt/project configuration is a configuration task, while task-local agents are an execution pattern. Use dedicated prompt-layering or app-configuration guidance when it is installed; otherwise inspect the current configuration before advising.
 
@@ -421,7 +437,7 @@ OUTPUT: Files changed, tests/checks run, risks remaining.
 
 Use workers only when write scopes are disjoint and the user has asked for delegated implementation.
 
-## Demo Explanation for Non-Technical Users
+## Plain-Language Explanation for Non-Technical Users
 
 Use this explanation:
 
@@ -438,7 +454,7 @@ Then the main assistant merges the findings, fixes the source files, and regener
 That is the beginning of agentic work: roles, tools, evidence, correction.
 ```
 
-Good live demo shape:
+Good first-workflow shape:
 
 ```text
 1. Open a realistic folder and explain the goal in plain language.
@@ -449,7 +465,7 @@ Good live demo shape:
 6. Show regenerated outputs.
 ```
 
-Keep the demo small. The point is not complexity; the point is the shift from chat answer to workflow.
+Keep the first workflow small. The point is not complexity; the point is the shift from chat answer to repeatable workspace process.
 
 ## Relationship to Prompt Configuration
 
@@ -469,7 +485,7 @@ If the user asks how to configure Codex itself, custom prompts, project instruct
 ## References
 
 - `references/agentic-review-pattern.md` — reusable review structure and role contracts.
-- `references/business-plan-demo.md` — case-study arc: plain chat → prompt contract → generated package → tripartite review → fixes.
+- `references/business-plan-example.md` — optional example arc: plain chat -> prompt contract -> generated package -> focused review -> fixes.
 - `references/delegation-patterns.md` — when to use reviewers, researchers, thinkers, or workers.
 - `references/mcp-artifact-tools.md` — MCP/tool capability gate for Word, Excel, PDFs, and forms.
-- `assets/review-prompts/` — copyable prompt cards for demos or custom agent files.
+- `assets/review-prompts/` and `assets/workflow-prompts/` — copyable prompt cards for reviews and first-run setup.
