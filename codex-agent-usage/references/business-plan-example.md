@@ -10,12 +10,12 @@ A user says AI is only useful for polishing emails and presentations because it:
 - forgets to update values consistently;
 - produces plausible but unreliable business plans.
 
-The answer is not “trust the AI more.” The answer is to change the workflow. A browser chat without file tools, formulas, review roles, or regeneration is not the same operating environment as a Codex workspace with local files, plugins, MCP servers, and task-local agents.
+The answer is not “trust the AI more.” The answer is to change the workflow. A plain chat prompt without file tools, formulas, review roles, or regeneration is not the same operating mode as a Codex desktop workflow with local files, plugins, MCP servers, and task-local agents.
 
 Frame this without model tribalism:
 
 ```text
-The problem is not which brand of model wins in a chat tab. The problem is asking any chat tab to act like a full workspace without giving it tools, sources of truth, and reviewers.
+The problem is asking a single chat prompt to act like a full workspace without giving Codex tools, sources of truth, and reviewers.
 ```
 
 ## Step 1 — Plain Chat Creates the Contract

@@ -1,8 +1,8 @@
 # Codex Workflow Orchestration Skill
 
-This repository contains a Codex skill that helps Codex use the Codex Desktop / Codex CLI environment more effectively: plugins, skills, MCP servers, artifact tools, project instructions, and task-local agents.
+This repository contains a Codex skill that helps Codex use the Codex desktop app environment more effectively: plugins, skills, MCP servers, artifact tools, project instructions, and task-local agents.
 
-It is written primarily **for Codex to read and install**, not as a long manual for end users. The README is the sharing wrapper: give people this link, tell Codex to install the skill folder, then use `$codex-agent-usage` to move from browser-chat guessing to tool-backed workflow.
+It is written primarily **for Codex to read and install**, not as a long manual for end users. The README is the sharing wrapper: give people this link, tell Codex to install the skill folder, then use `$codex-agent-usage` to move from plain-chat guessing to tool-backed workflow.
 
 ## Why this exists
 
@@ -12,7 +12,7 @@ This skill is a small **Codex unlock kit**. It teaches Codex to start important 
 
 It helps Codex avoid common bare-setup failure modes:
 
-- treating Codex like a plain browser chat instead of a workspace;
+- treating Codex like a plain chat box instead of a workspace;
 - doing broad reviews in the main thread until context is exhausted;
 - calculating important numbers in prose instead of using a source of truth;
 - inventing fragile extraction scripts before checking for document, spreadsheet, PDF, or presentation tools;
@@ -128,8 +128,8 @@ When the task involves user files, Codex should first check whether the local ap
 - **Spreadsheets** for `.xlsx`, `.csv`, `.tsv`, and Google Sheets-ready files;
 - **PDF** for PDF reading, rendering, extraction, creation, and verification;
 - **Presentations** for `.pptx` and Google Slides-targeted decks;
-- **Browser / Chrome / Computer Use** when the task depends on an app or website UI;
-- **Gmail / Google Calendar / GitHub / Notion / Slack / Drive** when the work depends on connected account data;
+- **Browser / Computer Use** when the task depends on an app or website UI;
+- account connectors when the work depends on authorized mail, calendar, code hosting, cloud-drive, or team data;
 - domain plugins such as **Data Analytics**, **Sales**, **Investment Banking**, or **Product Design** when the task matches them.
 
 If the required plugin is not installed or visible, Codex should say that plainly and propose the smallest safe setup path.
@@ -139,7 +139,7 @@ If the required plugin is not installed or visible, Codex should say that plainl
 When using this skill, Codex should ask before it:
 
 - edits Codex configuration files;
-- installs MCP servers, plugins, packages, or CLIs;
+- installs MCP servers, plugins, packages, or command-line tools;
 - overwrites an existing skill;
 - creates or changes a project-level `AGENTS.md` file;
 - uploads private files to external services;
@@ -167,7 +167,7 @@ This repository is released under the MIT License. See [`LICENSE`](LICENSE).
 
 ## Notes for maintainers
 
-This skill is expected to evolve as Codex Desktop, Codex CLI, plugins, and skill locations change. Keep the skill's guidance runtime-discovery-first: the model should inspect the actual environment before giving path-specific or version-specific advice.
+This skill is expected to evolve as Codex desktop app, plugins, and skill locations change. Keep the skill's guidance runtime-discovery-first: the model should inspect the actual environment before giving path-specific or version-specific advice.
 
 Before publishing changes:
 
