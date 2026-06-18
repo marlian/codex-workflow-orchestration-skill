@@ -111,6 +111,11 @@ codex-agent-usage/
 
 The skill folder is intentionally self-contained. The repository README is only the installation and orientation wrapper.
 
+
+## License
+
+This repository is released under the MIT License. See [`LICENSE`](LICENSE).
+
 ## Notes for maintainers
 
 This skill is expected to evolve as Codex Desktop, Codex CLI, plugins, and skill locations change. Keep the skill's guidance runtime-discovery-first: the model should inspect the actual environment before giving path-specific or version-specific advice.
